@@ -10,7 +10,7 @@ USER docker
 COPY . .
 RUN sudo dpkg -i monero-v0.15_1.0_amd64.deb
 
-EXPOSE 18080 28080 8000
+EXPOSE 18080 28080 18081
 
 
 ENTRYPOINT ["monerod"]
