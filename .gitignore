@@ -2,3 +2,5 @@
 !/.gitignore
 !/Dockerfile
 !/configs
+!/docker-compose.yml
+!/setup.sh

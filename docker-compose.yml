@@ -1,0 +1,9 @@
+version: '3'
+services:
+  xmr: 
+    build: .
+    ports:
+      - "80:80"
+      - "18080:18080"
+    volumes:
+      - .:/home/monero
