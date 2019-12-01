@@ -1,29 +1,16 @@
 FROM ubuntu:18.04
+RUN apt-get update && \
+	apt-get install sudo 
+# Create user docker	
+RUN adduser --disabled-password --gecos '' docker
+RUN adduser docker sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-# Create monero user
-RUN adduser --system --group --disabled-password monero && \
-	mkdir -p /wallet /home/monero/.bitmonero && \
-	chown -R monero:monero /home/monero/.bitmonero && \
-	chown -R monero:monero /wallet
-
-VOLUME /home/monero
-# Contains the blockchain
-VOLUME /home/monero/.bitmonero
-WORKDIR /home/monero
+USER docker
 COPY . .
-RUN dpkg -i monero-v0.15_1.0_amd64.deb
+RUN sudo dpkg -i monero-v0.15_1.0_amd64.deb
 
-# Generate your wallet via accessing the container and run:
-# cd /wallet
-# monero-wallet-cli
-VOLUME /wallet
+EXPOSE 18080 18081
 
-EXPOSE 18080
-EXPOSE 80
-
-# switch to user monero
-USER monero
-
-ENTRYPOINT ["monerod", "--detach","--non-interactive","--config-file=configs/private.testnet.config"]
-
-# FOR MANUAL DATA INTEGRITY CHECKING ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["monerod"]
+CMD ["--non-interactive", "--config-file=configs/private.testnet.config"]
