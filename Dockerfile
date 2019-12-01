@@ -10,7 +10,7 @@ USER docker
 COPY . .
 RUN sudo dpkg -i monero-v0.15_1.0_amd64.deb
 
-EXPOSE 18080 18081
+EXPOSE 18080 80
 
 ENTRYPOINT ["monerod"]
 CMD ["--non-interactive", "--config-file=configs/private.testnet.config"]
