@@ -24,6 +24,6 @@ EXPOSE 80
 # switch to user monero
 USER monero
 
-ENTRYPOINT ["monerod", "--config-file=configs/production.config"]
+ENTRYPOINT ["monerod", "--detach","--nont-interactive","--config-file=configs/production.config"]
 
 # FOR MANUAL DATA INTEGRITY CHECKING ENTRYPOINT ["tail", "-f", "/dev/null"]
