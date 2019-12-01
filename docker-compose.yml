@@ -1,8 +1,14 @@
 version: '3'
 services:
-  xmr: 
+  xmr1: 
     build: .
     ports:
       - "80:18081"
       - "18080:18080"
-      - "28080:28080"
+  # add xmr2 , xmr3, ... with ports n{8080} and n{8081}
+  #
+  #
+  #
+  #
+  #
+  #
