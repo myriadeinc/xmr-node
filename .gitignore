@@ -3,4 +3,4 @@
 !/Dockerfile
 !/configs
 !/docker-compose.yml
-!/setup.sh
+!/docker-entrypoint.sh

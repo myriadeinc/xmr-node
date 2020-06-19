@@ -2,9 +2,12 @@ version: '3'
 services:
   xmr1: 
     build: .
+    volumes:
+      - /var/lib/monerod:/var/lib/monerod
     ports:
       - "80:18081"
       - "18080:18080"
+
   # add xmr2 , xmr3, ... with ports n{8080} and n{8081}
   #
   #
